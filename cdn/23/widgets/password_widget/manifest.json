@@ -1,0 +1,33 @@
+{
+  "name": "password_widget",
+  "label": "Password Widget",
+  "version": "1.0.0",
+  "exbVersion": "1.18.0",
+  "type": "widget",
+  "author": "TPD Projects",
+  "description": "A password-protected widget that enables navigation to another page when the correct password is entered.",
+  "copyright": "",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "properties": {
+    "hasConfig": true,
+    "hasSettingPage": true,
+    "hasSettingUIFile": true,
+    "hasSettingLocale": false,
+    "hasSettingStyle": false,
+    "supportWidgetActions": false,
+    "hasOwnDataSource": false,
+    "inPanel": true,
+    "keepStateAfterSwitchingView": false,
+    "isController": false,
+    "isLayoutWidget": false,
+    "isSystemWidget": false,
+    "hasVersionManager": false
+  },
+  "translatedLocales": [
+    "en"
+  ],
+  "defaultSize": {
+    "width": 300,
+    "height": 200
+  }
+}
