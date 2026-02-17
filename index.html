@@ -49,7 +49,18 @@ html.scrollable body, html.scrollable #app { height: auto; }
 	function initAuth() {
 		if (typeof msal === 'undefined') { document.getElementById('loading').innerHTML = '<p style="padding:2rem;text-align:center;">Microsoft sign-in library failed to load.</p>'; return; }
 		var msalInstance = new msal.PublicClientApplication(msalConfig);
-		msalInstance.initialize().then(function() { var accounts = msalInstance.getAllAccounts(); if (accounts.length === 0) return msalInstance.loginRedirect(loginRequest); loadApp(); }).catch(function(err) { console.error('MSAL init error', err); document.getElementById('loading').innerHTML = '<p style="padding:2rem;text-align:center;">Sign-in failed. Check console.</p>'; });
+		msalInstance.initialize()
+			.then(function() {
+				// MUST handle redirect first when returning from Microsoft login
+				return msalInstance.handleRedirectPromise();
+			})
+			.then(function(response) {
+				// Redirect handled (or we weren't in a redirect); now safe to check accounts
+				var accounts = msalInstance.getAllAccounts();
+				if (accounts.length === 0) return msalInstance.loginRedirect(loginRequest);
+				loadApp();
+			})
+			.catch(function(err) { console.error('MSAL init error', err); document.getElementById('loading').innerHTML = '<p style="padding:2rem;text-align:center;">Sign-in failed. Check console.</p>'; });
 	}
 	if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAuth); else initAuth();
 })();
