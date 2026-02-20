@@ -1,0 +1,22 @@
+{
+  "name": "Time_Distance_Matrix",
+  "label": "Time_Distance_Matrix",
+  "type": "widget",
+  "version": "1.18.0",
+  "exbVersion": "1.18.0",
+  "author": "Austin McGinley",
+  "description": "Builds a Time Distance Matrix to a location specified by the user. Uses OpenRouteService API to build the DTM. *Note: The tool does not allow for the user to specifiy origin of Time Distance Matrix.*",
+  "properties": {
+    "useMapWidget": true
+  },
+  "dependency": [
+    "jimu-arcgis"
+  ],
+  "defaultSize": {
+    "width": 400,
+    "height": 300
+  },
+  "translatedLocales": [
+    "en"
+  ]
+}
